@@ -30,10 +30,10 @@
 						</li>
 						<!-- Open trades nav option -->
 						<li class="nav-item">
-							{% url 'open_trades' as open_trades %}
-							<a href="#" class="nav-link {% if request.path == open_trades %} active {% endif %}">
+							{% url 'holdings' as holdings %}
+							<a href="#" class="nav-link {% if request.path == holdings %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Open Trades</p>
+								<p>Holdings</p>
 							</a>
 						</li>
 						<!-- Open trades nav option -->
@@ -77,7 +77,7 @@
 							{% url 'market_health' as market_health %}
 							<a href="#" class="nav-link {% if request.path == market_health %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Market Stats</p>
+								<p>Overall Market Stats</p>
 							</a>
 						</li>
 						<!-- Live Market stats nav option -->
@@ -85,7 +85,7 @@
 							{% url 'market_live' as market_live %}
 							<a href="#" class="nav-link {% if request.path == market_live %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Live Market Stats</p>
+								<p>Intraday Market Stats</p>
 							</a>
 						</li>
 					</ul>
