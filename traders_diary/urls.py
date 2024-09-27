@@ -19,6 +19,6 @@ from django.urls import path, include
 from django.conf import settings
 
 urlpatterns = [
+    path("", include("trades.urls")),
     path('admin/', admin.site.urls),
-    path("trades/", include("trades.urls")),
 ]

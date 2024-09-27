@@ -1,3 +1,4 @@
+{% load static %}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Sidebar -->
 	<div class="sidebar">
@@ -6,8 +7,8 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<!-- Dashboard -->
 				<li class="nav-item">
-					{% url 'dashboard' as dashboard %}
-					<a href="#">
+					{% url 'stats' as stats %}
+					<a href="{%url 'dashboard' %}" class="nav-link {% if request.path == dashboard %} active {% endif %}">
 						<i class="nav-icon fas fa-chart-line"></i>
 						<p>Dashboard</p>
           </a>
@@ -22,7 +23,7 @@
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
 							{% url 'all_trades' as all_trades %}
-							<a href="#">
+							<a href="{%url 'all_trades' %}" class="nav-link {% if request.path == all_trades %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>All Trades</p>
 							</a>
@@ -30,7 +31,7 @@
 						<!-- Open trades nav option -->
 						<li class="nav-item">
 							{% url 'open_trades' as open_trades %}
-							<a href="#">
+							<a href="#" class="nav-link {% if request.path == open_trades %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Open Trades</p>
 							</a>
@@ -38,7 +39,7 @@
 						<!-- Open trades nav option -->
 						<li class="nav-item">
 							{% url 'imports_file' as imports_file %}
-							<a href="#">
+							<a href="#" class="nav-link {% if request.path == imports_file %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Import Trades</p>
 							</a>
@@ -53,17 +54,12 @@
           </a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="#">
+							<a href="#" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>All Plans
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="#">
-								<i class="far fa-circle nav-icon"></i>Open Plans
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="#">
+							<a href="#" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>Create New Plan
 							</a>
 						</li>
@@ -79,7 +75,7 @@
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
 							{% url 'market_health' as market_health %}
-							<a href="#">
+							<a href="#" class="nav-link {% if request.path == market_health %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Market Stats</p>
 							</a>
@@ -87,7 +83,7 @@
 						<!-- Live Market stats nav option -->
 						<li class="nav-item">
 							{% url 'market_live' as market_live %}
-							<a href="#">
+							<a href="#" class="nav-link {% if request.path == market_live %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Live Market Stats</p>
 							</a>
@@ -96,11 +92,13 @@
 				</li> <!-- stats -->
 				<li class="nav-item">
 					{% url 'scanners' as scanners %}
-					<a href="#">
+					<a href="#" class="nav-link {% if request.path == scanners %} active {% endif %}">
 						<i class="nav-icon fa-solid fa-magnifying-glass-dollar"></i>
 						<p>Scanners</p>
           </a>
         </li>
+
+
 			</ul> <!-- nav-sidebar flex-column -->
     </nav><!-- /.sidebar-menu -->
   </div> <!-- /.sidebar -->
