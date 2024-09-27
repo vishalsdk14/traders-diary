@@ -6,4 +6,5 @@ from trades import trades, dashboard
 urlpatterns = [
         path("", dashboard.get_dashboard, name='dashboard'),
         path("all_trades/", trades.get_all_trades, name='all_trades'),
+        path("import_trades/", trades.import_trades, name='import_trades'),
 ]

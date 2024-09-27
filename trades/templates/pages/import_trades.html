@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block page_title %}
+    Import Trades
+{% endblock page_title %}
+
+{% block main_content %}
+
+<div class="container-fluid">
+	<div class="card card-primary">
+		<div class="card-header bg-primary">
+			<h3 class="card-title">Zerodha TradeBook CSV file Upload</h3>
+		</div>
+		<div class="card-body">
+			<form method= "post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<input type="file" name="tradebook">
+				<button type="submit"> Upload</button>
+			</form>
+		</div> <!-- card-body -->
+	</div> <!-- card -->
+</div> <!-- container-fluid -->
+
+{% endblock main_content %}

@@ -38,8 +38,8 @@
 						</li>
 						<!-- Open trades nav option -->
 						<li class="nav-item">
-							{% url 'imports_file' as imports_file %}
-							<a href="#" class="nav-link {% if request.path == imports_file %} active {% endif %}">
+							{% url 'import_trades' as import_trades %}
+							<a href="{%url 'import_trades' %}" class="nav-link {% if request.path == import_trades %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Import Trades</p>
 							</a>
