@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block page_title %}
+    Account Details
+{% endblock page_title %}
+
+{% block main_content %}
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Account Details</h3>
+					</div>
+					{% url 'account_details' as action_path %}
+					{% include 'form_template.html' with form=form action_path=action_path %}
+					</div> <!-- card-primary -->
+			</div> <!-- col-md-12 -->
+		</div> <!-- row -->
+	</div> <!-- container-fluid -->
+</section>
+
+{% endblock main_content %}

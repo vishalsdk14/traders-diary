@@ -5,6 +5,7 @@
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
 				<!-- Dashboard -->
 				<li class="nav-item">
 					{% url 'stats' as stats %}
@@ -98,6 +99,14 @@
           </a>
         </li>
 
+				<!-- Portfolio Settings -->
+				<li class="nav-item">
+					{% url 'settings' as settings %}
+					<a href="{%url 'settings' %}" class="nav-link {% if request.path == settings %} active {% endif %}">
+						<i class="nav-icon fas fa-cog"></i>
+						<p>Portfolio Settings</p>
+          </a>
+        </li>
 
 			</ul> <!-- nav-sidebar flex-column -->
     </nav><!-- /.sidebar-menu -->
