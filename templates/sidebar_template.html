@@ -1,0 +1,107 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<!-- Sidebar Menu -->
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<!-- Dashboard -->
+				<li class="nav-item">
+					{% url 'dashboard' as dashboard %}
+					<a href="#">
+						<i class="nav-icon fas fa-chart-line"></i>
+						<p>Dashboard</p>
+          </a>
+        </li>
+
+				<!-- Trades nav option -->
+				<li class="nav-item menu-open">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-receipt"></i>
+						<p>Trades <i class="fas fa-angle-left right"></i></p>
+          </a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							{% url 'all_trades' as all_trades %}
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>
+								<p>All Trades</p>
+							</a>
+						</li>
+						<!-- Open trades nav option -->
+						<li class="nav-item">
+							{% url 'open_trades' as open_trades %}
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Open Trades</p>
+							</a>
+						</li>
+						<!-- Open trades nav option -->
+						<li class="nav-item">
+							{% url 'imports_file' as imports_file %}
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Import Trades</p>
+							</a>
+						</li>
+					</ul>
+				</li> <!-- Trades -->
+				<!-- Trade planner nav option -->
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-lightbulb"></i>
+						<p>Trade Planner <i class="fas fa-angle-left right"></i></p>
+          </a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>All Plans
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>Open Plans
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>Create New Plan
+							</a>
+						</li>
+					</ul> <!-- nav-treeview -->
+				</li> <!-- trade planner nav-item -->
+
+				<!-- Market stats nav option -->
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-flag-checkered"></i>
+						<p>Stats <i class="fas fa-angle-left right"></i></p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							{% url 'market_health' as market_health %}
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Market Stats</p>
+							</a>
+						</li>
+						<!-- Live Market stats nav option -->
+						<li class="nav-item">
+							{% url 'market_live' as market_live %}
+							<a href="#">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Live Market Stats</p>
+							</a>
+						</li>
+					</ul>
+				</li> <!-- stats -->
+				<li class="nav-item">
+					{% url 'scanners' as scanners %}
+					<a href="#">
+						<i class="nav-icon fa-solid fa-magnifying-glass-dollar"></i>
+						<p>Scanners</p>
+          </a>
+        </li>
+			</ul> <!-- nav-sidebar flex-column -->
+    </nav><!-- /.sidebar-menu -->
+  </div> <!-- /.sidebar -->
+</aside>
