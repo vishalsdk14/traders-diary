@@ -2,6 +2,53 @@
 {% block page_title %}
     All Trades
 {% endblock page_title %}
-
 {% block main_content %}
+<section class="content">
+<div class="container-fluid">
+  <div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">All Trades Details</h3>
+					<div class="card-tools">
+						<form method='GET' class='' action='.'>
+							<div class="input-group input-group-sm" style="width: 250px;">
+								<input type="text" name="query" class="form-control float-right" placeholder="Search">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+								</div>
+							</div> <!--input-group input-group-sm -->
+						</form>
+					</div> <!--card-tools -->
+				</div> <!-- card-header -->
+			</div> <!-- card -->
+		</div> <!-- col-md-12 -->
+		{% for entry in objects %}
+			<div class="col-lg-3 col-6">
+				<div class="small-box bg-light">
+					<div class="inner">
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							{{entry.Symbol}}
+						</button>
+								<p> <b>Buy Date:</b> {{entry.BuyDate | date:"d M Y"}}</p>
+								<p> <b>Buy Reason:</b> {{entry.get_BuyReason_display}}, Base Width:{{entry.BaseDays}} Days</p>
+								<p> <b>Sell Reason:</b> {{entry.get_SellReason_display}} </p>
+								<p> <b>AVG Price:</b> {{entry.AvgPrice | floatformat:2 }}</p>
+								{% if entry.Pnl > 0 %}
+									<p style="color:green;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
+								{% else %}
+									<p style="color:red;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
+								{% endif %}
+							</div>
+							<a href="https://marketsmithindia.com/mstool/eval/{{entry.Symbol}}/evaluation.jsp#/" target="_blank" class="small-box-footer">Chart<i class="fas fa-arrow-circle-right"></i></a>
+						</div>
+					</div>
+				{% endfor %}
+		</div> <!-- row -->
+		{% include "pagination.html" %}
+</div> <!-- container-fluid -->
+</section>
+
+
+
 {% endblock main_content %}

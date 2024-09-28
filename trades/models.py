@@ -100,8 +100,8 @@ class Tradedata(models.Model):
             return Tradedata.objects.all()
 
         objects = Tradedata.objects.filter(
-                    Q(Symbol__icontains=query) | 
-                    Q(Notes__icontains=query) 
+                    Q(Symbol__icontains=query)
+                    #| Q(Notes__icontains=query) 
         )
         return objects
 
