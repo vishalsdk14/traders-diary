@@ -1,0 +1,48 @@
+<div class="card">
+	<div class="card-body table-responsive p-0">
+		<table class="table table-hover text-wrap" style="border: 1px solid black;">
+			 <thead>
+				 <tr>
+					 <th>Symbol</th>
+					 <th>Buy Date</th>
+					 <th>Buy Reason</th>
+					 <th>Base Width</th>
+					 <th>Trade Duration</th>
+					 <th>Profit/Loss</th>
+					 <th>Profit/Loss w.r.t capital</th>
+					 <th>Sell Reason</th>
+					 <th>Chart Link</th>
+				 </tr>
+				</thead>
+				<tbody>
+					{% for entry in objects %}
+						<tr>
+							<td><a href="{% url 'edit_trade' pk=entry.pk%}">{{entry.Symbol}}</a></td>
+							<td>{{ entry.BuyDate | date:"d M Y" }}</td>
+							<td>{{entry.get_BuyReason_display}}</td>
+							<td>{{ entry.BaseDays }}</td>
+							<td>{{ entry.TradeDuration }}</td>
+							{% if entry.Pnl > 0 %}
+								<td><p style="color:green;"> {{entry.Pnl | floatformat:2 }}</p></td>
+							{% else %}
+								<td><p style="color:red;"> {{entry.Pnl | floatformat:2 }}</p></td>
+							{% endif %}
+							{% if entry.PerPnLwrtCap > 0 %}
+								<td><p style="color:green;">{{ entry.PerPnLwrtCap | floatformat:2 }}</p></td>
+							{% else %}
+								<td><p style="color:red;">{{ entry.PerPnLwrtCap | floatformat:2 }}</p></td>
+							{% endif %}
+							<td>{{ entry.get_SellReason_display }}</td>
+							<td><a href="https://in.tradingview.com/chart/15H6osLe/?symbol=NSE%3A{{entry.Symbol}}" target="_blank" class="small-box-footer">Link</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+		</table>
+	</div> <!-- card-body -->
+</div> <!-- card -->
+
+<style>
+table,th,td {
+	border: 1px solid black;
+}
+</style>

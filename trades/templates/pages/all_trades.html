@@ -13,40 +13,34 @@
 					<div class="card-tools">
 						<form method='GET' class='' action='.'>
 							<div class="input-group input-group-sm" style="width: 250px;">
+								<div id="btnContainer" class="input-group-append mr-2">
+									{% if view_type == "list" %}
+										<button class="btn btn-primary" name="view_type" value="list_view"><i class="fa fa-bars"></i> List</button>
+										<button class="btn" name="view_type" value="grid_view"><i class="fa fa-th-large"></i> Grid</button>
+									{% else %}
+										<button class="btn" name="view_type" value="list_view"><i class="fa fa-bars"></i> List</button>
+										<button class="btn btn-primary" name="view_type" value="grid_view"><i class="fa fa-th-large"></i> Grid</button>
+									{% endif %}
+								</div>
 								<input type="text" name="query" class="form-control float-right" placeholder="Search">
 								<div class="input-group-append">
 									<button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
 								</div>
+								<br>
 							</div> <!--input-group input-group-sm -->
 						</form>
 					</div> <!--card-tools -->
 				</div> <!-- card-header -->
 			</div> <!-- card -->
 		</div> <!-- col-md-12 -->
-		{% for entry in objects %}
-			<div class="col-lg-3 col-6">
-				<div class="small-box bg-light">
-					<div class="inner">
-						<h3> <a href="{% url 'edit_trade' pk=entry.pk%}" class="small-box bg-primary">{{entry.Symbol}}</a></h3>
-							<p> <b>Buy Date:</b> {{entry.BuyDate | date:"d M Y"}}</p>
-							<p> <b>Buy Reason:</b> {{entry.get_BuyReason_display}}, Base Width:{{entry.BaseDays}} Days</p>
-							<p> <b>Sell Reason:</b> {{entry.get_SellReason_display}} </p>
-							<p> <b>AVG Price:</b> {{entry.AvgPrice | floatformat:2 }}</p>
-							{% if entry.Pnl > 0 %}
-								<p style="color:green;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
-							{% else %}
-								<p style="color:red;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
-							{% endif %}
-						</div>
-						<a href="https://marketsmithindia.com/mstool/eval/{{entry.Symbol}}/evaluation.jsp#/" target="_blank" class="small-box-footer">Chart<i class="fas fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-			{% endfor %}
-		</div> <!-- row -->
+		{% if view_type == "list" %}
+			{% include "pages/list_view.html" %}
+		{% else %}
+			{% include "pages/grid_view.html" %}
+		{% endif %}
+	</div> <!-- row -->
 		{% include "pagination.html" %}
 </div> <!-- container-fluid -->
 </section>
-
-
 
 {% endblock main_content %}

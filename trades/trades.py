@@ -5,16 +5,27 @@ from trades.models import Tradedata
 from trades.forms import TradeForm
 import pandas as pd
 
+view="grid"
+
 def get_all_trades(request):
+    global view
+
     query = request.GET.get("query", None)
     objects = Tradedata.get_objects(query)
-
     default_page = 1
 
-    page = request.GET.get('page', default_page)
-    items_per_page = 8
-    paginator = Paginator(objects, items_per_page)
+    if request.GET.get("view_type") == "list_view":
+        view="list"
+    elif request.GET.get("view_type") == "grid_view":
+        view="grid"
 
+    page = request.GET.get('page', default_page)
+    if view == "grid":
+        items_per_page = 8
+    elif view=="list":
+        items_per_page = 10
+
+    paginator = Paginator(objects, items_per_page)
     try:
         items_page = paginator.page(page)
     except PageNotAnInteger:
@@ -24,6 +35,7 @@ def get_all_trades(request):
 
     ctx = {
             'objects' : items_page,
+            'view_type': view,
     }
 
     return render(request, "pages/all_trades.html", ctx)
