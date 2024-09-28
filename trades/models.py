@@ -114,12 +114,9 @@ class Tradedata(models.Model):
         if self.OpenPos == 0:
             self.TradeDuration = (self.SellDate - self.BuyDate).days
 
-        self.save()
-
     def Update_MaxLoss(self):
         self.MaxLoss = (self.StopLoss - self.AvgPrice) * self.OpenPos
         self.PerStopLoss = ((self.AvgPrice - self.StopLoss)/self.AvgPrice) * 100
-        self.save()
 
     def __str__(self):
         return self
