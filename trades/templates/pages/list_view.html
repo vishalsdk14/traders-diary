@@ -38,7 +38,7 @@
 							{% endif %}
 							<td>{{ entry.get_SellReason_display }}</td>
 							<td>
-								<a href="https://in.tradingview.com/chart/15H6osLe/?symbol=NSE%3A{{entry.Symbol}}" target="_blank" class="btn btn-info">Chart</a>
+								<a href="https://marketsmithindia.com/mstool/eval/{{entry.Symbol}}/evaluation.jsp#" target="_blank" class="btn btn-info">Chart</a>
 								<a href="{% url 'delete_trade' pk=entry.pk%}" class="btn btn-danger">Delete</a>
 							</td>
 						</tr>
