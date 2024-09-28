@@ -68,3 +68,8 @@ def edit_trade(request, pk):
     }
 
     return render(request, "pages/edit_trade.html", ctx)
+
+def delete_trade(request, pk):
+    entry = get_object_or_404(Tradedata, pk=pk)
+    entry.delete()
+    return redirect('all_trades') 

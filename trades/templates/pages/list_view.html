@@ -11,7 +11,7 @@
 					 <th>Profit/Loss</th>
 					 <th>Profit/Loss w.r.t capital</th>
 					 <th>Sell Reason</th>
-					 <th>Chart Link</th>
+					 <th>Action</th>
 				 </tr>
 				</thead>
 				<tbody>
@@ -33,7 +33,10 @@
 								<td><p style="color:red;">{{ entry.PerPnLwrtCap | floatformat:2 }}</p></td>
 							{% endif %}
 							<td>{{ entry.get_SellReason_display }}</td>
-							<td><a href="https://in.tradingview.com/chart/15H6osLe/?symbol=NSE%3A{{entry.Symbol}}" target="_blank" class="small-box-footer">Link</a></td>
+							<td>
+								<a href="https://in.tradingview.com/chart/15H6osLe/?symbol=NSE%3A{{entry.Symbol}}" target="_blank" class="btn btn-info">Chart</a>
+								<a href="{% url 'delete_trade' pk=entry.pk%}" class="btn btn-danger">Delete</a>
+							</td>
 						</tr>
 					{% endfor %}
 				</tbody>
