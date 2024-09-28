@@ -6,8 +6,10 @@
 					 <th>Symbol</th>
 					 <th>Buy Date</th>
 					 <th>Buy Reason</th>
-					 <th>Base Width</th>
-					 <th>Trade Duration</th>
+					 <th>Base Width(Days)</th>
+					 <th>Trade Duration(Days)</th>
+					 <th>Average Buy Price</th>
+					 <th>Average Sell Price</th>
 					 <th>Profit/Loss</th>
 					 <th>Profit/Loss w.r.t capital</th>
 					 <th>Sell Reason</th>
@@ -22,6 +24,8 @@
 							<td>{{entry.get_BuyReason_display}}</td>
 							<td>{{ entry.BaseDays }}</td>
 							<td>{{ entry.TradeDuration }}</td>
+							<td>{{ entry.AvgPrice | floatformat:2 }}</td>
+							<td>{{ entry.AvgSellPrice | floatformat:2 }}</td>
 							{% if entry.Pnl > 0 %}
 								<td><p style="color:green;"> {{entry.Pnl | floatformat:2 }}</p></td>
 							{% else %}
