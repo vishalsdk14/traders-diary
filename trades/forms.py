@@ -11,3 +11,8 @@ class AccountForm(ModelForm):
                 'MaxPosSizePerTrade': forms.NumberInput(attrs={"class":"form-control"}),
                 'MaxRiskPerTrade' : forms.NumberInput(attrs={"class":"form-control"}),
         }
+        labels = {
+            "Capital": "Initial Capital",
+            "MaxPosSizePerTrade": "Max Position Size %",
+            "MaxRiskPerTrade": "Max Risk Per trade %"
+        }
