@@ -27,23 +27,21 @@
 			<div class="col-lg-3 col-6">
 				<div class="small-box bg-light">
 					<div class="inner">
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-							{{entry.Symbol}}
-						</button>
-								<p> <b>Buy Date:</b> {{entry.BuyDate | date:"d M Y"}}</p>
-								<p> <b>Buy Reason:</b> {{entry.get_BuyReason_display}}, Base Width:{{entry.BaseDays}} Days</p>
-								<p> <b>Sell Reason:</b> {{entry.get_SellReason_display}} </p>
-								<p> <b>AVG Price:</b> {{entry.AvgPrice | floatformat:2 }}</p>
-								{% if entry.Pnl > 0 %}
-									<p style="color:green;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
-								{% else %}
-									<p style="color:red;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
-								{% endif %}
-							</div>
-							<a href="https://marketsmithindia.com/mstool/eval/{{entry.Symbol}}/evaluation.jsp#/" target="_blank" class="small-box-footer">Chart<i class="fas fa-arrow-circle-right"></i></a>
+						<h3> <a href="{% url 'edit_trade' pk=entry.pk%}" class="small-box bg-primary">{{entry.Symbol}}</a></h3>
+							<p> <b>Buy Date:</b> {{entry.BuyDate | date:"d M Y"}}</p>
+							<p> <b>Buy Reason:</b> {{entry.get_BuyReason_display}}, Base Width:{{entry.BaseDays}} Days</p>
+							<p> <b>Sell Reason:</b> {{entry.get_SellReason_display}} </p>
+							<p> <b>AVG Price:</b> {{entry.AvgPrice | floatformat:2 }}</p>
+							{% if entry.Pnl > 0 %}
+								<p style="color:green;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
+							{% else %}
+								<p style="color:red;"> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
+							{% endif %}
 						</div>
+						<a href="https://marketsmithindia.com/mstool/eval/{{entry.Symbol}}/evaluation.jsp#/" target="_blank" class="small-box-footer">Chart<i class="fas fa-arrow-circle-right"></i></a>
 					</div>
-				{% endfor %}
+				</div>
+			{% endfor %}
 		</div> <!-- row -->
 		{% include "pagination.html" %}
 </div> <!-- container-fluid -->

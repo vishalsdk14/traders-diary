@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Q
+import logging
+logger = logging.getLogger("trades")
 
 # Create your models here.
 
@@ -107,6 +109,9 @@ class Tradedata(models.Model):
 
     def Update_PnL(self):
         Capital = AccountData.get_capital()
+        if Capital == 0:
+            return
+
         self.Pnl = (self.AvgSellPrice - self.AvgPrice) * self.SoldPos
         self.PerPnL = ((self.AvgSellPrice - self.AvgPrice) / self.AvgPrice) * 100
         self.PerPosSize = ((self.AvgPrice * self.SoldPos) / Capital) * 100

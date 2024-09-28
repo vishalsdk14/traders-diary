@@ -1,9 +1,9 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from trades.utils import get_or_create_trade_entry
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from trades.models import Tradedata
+from trades.forms import TradeForm
 import pandas as pd
-
 
 def get_all_trades(request):
     query = request.GET.get("query", None)
@@ -37,3 +37,22 @@ def import_trades(request):
             get_or_create_trade_entry(row)
 
     return render(request, "pages/import_trades.html", {})
+
+def edit_trade(request, pk):
+    entry = get_object_or_404(Tradedata, pk=pk)
+    form = TradeForm(request.POST, request.FILES, instance=entry)
+
+    if request.POST and form.is_valid():
+        entry.Update_PnL()
+        entry.Update_MaxLoss()
+        form.save()
+        return redirect('all_trades') 
+    else :
+        form=TradeForm(instance=entry)
+
+    ctx = {
+            'form': form,
+            'entry' : entry,
+    }
+
+    return render(request, "pages/edit_trade.html", ctx)
