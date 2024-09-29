@@ -12,6 +12,7 @@ urlpatterns = [
         path("holdings/", trades.holdings, name='holdings'),
         
         path('charts/eqcurve', charts.equity_curve.as_view()),
+        path('charts/pnlgraph', charts.pnl_graph.as_view()),
 
         path("settings/", utils.get_or_set_settings, name='settings'),
 ]

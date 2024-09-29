@@ -31,3 +31,25 @@ class equity_curve(APIView):
              }
         return Response(data)
 
+class pnl_graph(APIView): 
+    def get(self, request, format = None):
+        Entry = Tradedata.objects.all()[0]
+        PnLPerMonth = Tradedata.objects.filter(SellDate__gte=Entry.SellDate)\
+                    .annotate( monthly=Trunc('SellDate', 'month')) \
+                    .order_by('monthly')\
+                    .values('monthly')\
+                    .annotate(Profit=Sum('Pnl'))
+
+        chartLabel = "Monthly Profit"
+        label = [sub["monthly"] for sub in PnLPerMonth]
+        chartdata = [sub["Profit"] for sub in PnLPerMonth]
+        data ={
+                     "labels":label,
+                     "chartLabel":chartLabel,
+                     "chartdata":chartdata,
+                     "borderColor": 'black',
+                     "backgroundColor": '#228b22',
+             }
+        return Response(data)
+
+
