@@ -42,8 +42,12 @@ def get_dashboard(request):
     if  Tradedata.objects.count() == 0:
         return render(request, "pages/dashboard.html", {})
 
-    stats = get_stats()
+    objects = Tradedata.objects.all()
+    for entry in objects:
+        if entry.OpenPos == 0:
+            entry.Update_PnL()
 
+    stats = get_stats()
     ctx = {
             'stats': stats,
     }

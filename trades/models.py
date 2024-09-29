@@ -118,6 +118,7 @@ class Tradedata(models.Model):
         self.PerPnLwrtCap = (self.Pnl / Capital) * 100
         if self.OpenPos == 0:
             self.TradeDuration = (self.SellDate - self.BuyDate).days
+        self.save()
 
     def Update_MaxLoss(self):
         self.MaxLoss = (self.StopLoss - self.AvgPrice) * self.OpenPos
