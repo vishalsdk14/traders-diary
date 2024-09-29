@@ -4,4 +4,115 @@
 {% endblock page_title %}
 
 {% block main_content %}
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-3 col-6">
+				<div class="small-box bg-success">
+					<div class="inner">
+						<h3>{{ stats.Avgprofitwrtcap|floatformat:2 }}%</h3>
+						<p>Average Profit w.r.t capital</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-6">
+				<div class="small-box bg-danger">
+					<div class="inner">
+						<h3>{{stats.Avglosswrtcap|floatformat:2 }}%</h3>
+						<p>Average Loss w.r.t Capital</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-primary">
+					<div class="inner">
+						<h3>{{ stats.TotalTrades }}</h3>
+						<p>Total Trades</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-info">
+					<div class="inner">
+						<h3>{{ stats.WintoLossRatio | floatformat:2 }}</h3>
+						<p>Win to Loss Ratio</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-gradient-green">
+					<div class="inner">
+						<h3>{{ stats.NoOfWins }}</h3>
+						<p>Total Winning Trades</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-red">
+					<div class="inner">
+						<h3>{{ stats.NoOfLoss }}</h3>
+						<p>Total Losing Trades</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-primary">
+					<div class="inner">
+						<h3>{{ stats.BatAvg|floatformat:2 }}</h3>
+						<p>Bating Average</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<div class="small-box bg-info">
+					<div class="inner">
+						<h3>{{ stats.Avgholdtime |floatformat:2 }} Days</h3>
+						<p>Average Trade Duration</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-stats-bars"></i>
+					</div>
+					<a href="{% url 'all_trades' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+				</div>
+      </div>
+		</div>
+	</div>
+</section>
 {% endblock main_content %}

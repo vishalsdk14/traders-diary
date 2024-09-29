@@ -125,3 +125,21 @@ class Tradedata(models.Model):
 
     def __str__(self):
         return self
+
+class TradeStats(models.Model):
+    TotalProfit         = models.IntegerField(default=0)
+    NoOfWins            = models.IntegerField(default=0)
+    NoOfLoss            = models.IntegerField(default=0)
+    AvgProfit           = models.FloatField(default=0)
+    AvgLoss             = models.FloatField(default=0)
+    TotalTrades         = models.IntegerField(default=0)
+    BatAvg              = models.FloatField(default=0)
+    TotalPosPer         = models.FloatField(default=0)
+    TotalNegPer         = models.FloatField(default=0)
+    Avgholdtime         = models.IntegerField(default=0)
+    WintoLossRatio      = models.FloatField(default=0)
+    Avgprofitwrtcap     = models.IntegerField(default=0)
+    Avglosswrtcap       = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self
