@@ -1,6 +1,7 @@
 <!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,6 +82,6 @@
 {% comment %} For Custom JS {% endcomment %}
 {% block custom_js %}
 {% endblock custom_js %}
-
+<script src="{% static "charts/all_charts.js"  %}"></script>
 </body>
 </html>
