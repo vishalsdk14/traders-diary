@@ -20,6 +20,7 @@ performace.
 - `FontAwesome` - For embedding icons in Project.
 - `HTML/CSS` - For Coding Basic Templates of Project.
 - 'admin-lte 3.2.0' - For theme
+- 'yfinance' - For stock info
 
 ## Usage
 
