@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+Open Positions({{OpenPos}})
+{% endblock page_title %}
+
+{% block main_content %}
+
+<div class="table-container container-fluid">
+	<div class="row">
+		<div class="col-lg-3 col-6">
+			{% if PerTotalRisk < -1.2 %}
+			<div class="small-box bg-danger">
+			{% else %}
+			<div class="small-box bg-info">
+			{% endif %}
+				<div class="inner">
+					<h3> {{ PerTotalRisk | floatformat:2}}% </h3>
+					<p> Total Risk If all SLs are hit</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-info">
+				<div class="inner">
+					<h3> {{ TotalCapitalDeployed | floatformat:2}}% </h3>
+					<p>Capital deployed </p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-success">
+				<div class="inner">
+					<h3> {{ RiskFreePos}}</h3>
+					<p>Of Open Positions({{OpenPos}}) are Risk Free</p>
+				</div>
+			</div>
+		</div>
+	</div> <!-- stats row -->
+
+<h2>Positions</h2>
+	<div class="row">
+		{% for entry in objects %}
+			<div class="col-lg-3 col-6">
+				<div class="small-box bg-light">
+					<div class="inner">
+						<h3> <a href="{% url 'edit_trade' pk=entry.pk%}" class="small-box bg-primary">{{entry.Symbol}}:{{entry.Ltp | floatformat:2}}</a></h3>
+						<p> <b>Buy Date:</b> {{entry.BuyDate | date:"d M Y"}}</p>
+						<p> <b>Buy Reason:</b> {{entry.get_BuyReason_display}}, Base Width:{{entry.BaseDays}} Days</p>
+						<p> <b>AVG Price:</b> {{entry.AvgPrice | floatformat:2 }}</p>
+						<p> <b>Quantity:</b> {{entry.OpenPos}}</p>
+						<p> <b>Realised PnL:</b> {{entry.Pnl | floatformat:2 }}</p>
+						<p> <b>Unrealised PnL:</b> {{entry.UnrealisedPnl | floatformat:2 }}</p>
+						{% if entry.PerStopLoss > 5 %}
+						<p style="color:red;"> <b>Stop Loss:</b> {{entry.StopLoss | floatformat:2 }}({{entry.PerStopLoss | floatformat:2}}%)</p>
+						{% else %}
+						<p style="color:green;"> <b>Stop Loss:</b> {{entry.StopLoss | floatformat:2 }}({{entry.PerStopLoss | floatformat:2}}%)</p>
+						{% endif %}
+						{% if entry.PerPosSize > maxpossize %}
+							<p style="color:red;"> <b>Pos Size:</b> {{entry.PerPosSize | floatformat:2 }}%</p>
+						{% else %}
+							<p style="color:green;"> <b>Pos Size:</b> {{entry.PerPosSize | floatformat:2 }}%</p>
+						{% endif %}
+
+						{% if entry.MaxLoss > 0 %}
+							<p style="color:green;"> <b>Max Loss:</b>0</p>
+						{% elif entry.MaxLoss > maxlosspertrade %}
+							<p style="color:red;"> <b>Max Loss:</b> {{entry.MaxLoss | floatformat:2 }}%</p>
+						{% else %}
+							<p style="color:green;"> <b>Max Loss:</b> {{entry.MaxLoss | floatformat:2 }}%</p>
+						{% endif %}
+					</div>
+				</div>
+			</div> <!-- col-lg-3 col-6 -->
+		{% endfor %}
+	</div> <!-- row -->
+</div> <!-- Container-fluid -->
+
+{% endblock main_content %}
+

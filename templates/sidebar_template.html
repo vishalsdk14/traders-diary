@@ -32,7 +32,7 @@
 						<!-- Open trades nav option -->
 						<li class="nav-item">
 							{% url 'holdings' as holdings %}
-							<a href="#" class="nav-link {% if request.path == holdings %} active {% endif %}">
+							<a href="{%url 'holdings' %}" class="nav-link {% if request.path == holdings %} active {% endif %}">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Holdings</p>
 							</a>

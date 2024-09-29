@@ -9,6 +9,7 @@ urlpatterns = [
         path("import_trades/", trades.import_trades, name='import_trades'),
         path("edit_trade/<pk>/", trades.edit_trade, name='edit_trade'),
         path("delete_trade/<pk>/", trades.delete_trade, name='delete_trade'),
+        path("holdings/", trades.holdings, name='holdings'),
         
         path('charts/eqcurve', charts.equity_curve.as_view()),
 
