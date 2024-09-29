@@ -8,7 +8,8 @@ performace.
 ## Project Functionalities 
 - Import feature to upload Zerodha tradebook csv file only
 - Equity Curve vs Time
-- Display of all trades display is either grid/list format
+- Display of all trades either in grid/list format
+- Search option and pagination
 - Important stats such as Batting average, Win to Loss ratio, Average trade duration etc is shown on dashboard
 
 ## Technologies Used
