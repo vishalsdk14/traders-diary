@@ -77,6 +77,9 @@ def delete_trade(request, pk):
 
 def holdings(request):
     capital = AccountData.get_capital() 
+    if capital == 0:
+        return render(request, "pages/holdings.html", {})
+
     TotalCapitalDeployed = 0
     RiskFreePos = 0
     TotalRisk = 0
