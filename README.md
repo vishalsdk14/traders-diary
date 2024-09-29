@@ -42,6 +42,6 @@ python manage.py runserver
 Copy http://127.0.0.1:8000/ in browser and run
 
 
-##Note
+## Note
 - Currently only Zerodha tradebook csv file is supported.
 - Before uploading tradebook csv, Portfolio settings needs to be set. 
